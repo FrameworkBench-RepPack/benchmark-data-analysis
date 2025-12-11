@@ -19,7 +19,8 @@ results_list <- data %>%
                       method = "bh", 
                       altp = TRUE, 
                       table = FALSE, 
-                      list = TRUE)
+                      list = TRUE,
+                      alpha=0.001)
     
     # Create the table for this specific site
     tibble(

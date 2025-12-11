@@ -18,5 +18,4 @@ all_power_avg_data <- all_data$Average.Total.Power..J.
 
 ks_result <- ks.test(all_power_avg_data, "pnorm", mean = mean(all_power_avg_data), sd = sd(all_power_avg_data))
 
-# 3. View the result
 print(ks_result)
