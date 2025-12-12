@@ -26,13 +26,15 @@ results_list <- data %>%
           
           #Either "greater" or "less"
           wt <- wilcox.test(group_1_data, group_2_data, 
-                            alternative = "less",
+                            alternative = "greater",
                             conf.int = TRUE, 
                             conf.level = 0.999)
           
           tibble(
             # Change to greater: ">" or less: "<"
-            Comparison = paste(g1, "<", g2),
+            Framework_1 = g1,
+            Framework_2 = g2,
+            Comparison = paste(g1, ">", g2),
             W_Statistic = wt$statistic,
             P_Value = wt$p.value
           )
@@ -46,7 +48,7 @@ results_list <- data %>%
         Site = unique(df$Site),
         P_Adjusted = p.adjust(P_Value, method = "holm")
       ) %>%
-      relocate(Site, Comparison, W_Statistic, P_Value, P_Adjusted)
+      relocate(Site, Framework_1, Framework_2, Comparison, W_Statistic, P_Value, P_Adjusted)
   })
 
 if(!dir.exists("output")) dir.create("output")

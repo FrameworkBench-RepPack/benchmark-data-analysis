@@ -27,7 +27,7 @@ print(max_cv_row)
 max_sd <- max_cv_row %>%
   pull(Total.Power.SD..J.)
 
-# Cochran's (1.96 for p=0.05 2.58 for p=0.01)
-iterations <- ceiling(((3.35*max_sd)/0.005)^2)
+# Cochran's (1.96 for p=0.05 2.58 for p=0.01, 3.09 for p=0.001)
+iterations <- ceiling(((3.09*max_sd)/0.005)^2)
 
 print(iterations)

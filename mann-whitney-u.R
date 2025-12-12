@@ -24,7 +24,8 @@ results_list <- data %>%
         wt <- wilcox.test(group_1, group_2, conf.int = TRUE, conf.level = 0.999)
         
         tibble(
-          Comparison = paste(pair[1], "-", pair[2]),
+          Framework_1 = pair[1],
+          Framework_2 = pair[2],
           W_Statistic = wt$statistic,
           P_Value = wt$p.value
         )
@@ -35,7 +36,7 @@ results_list <- data %>%
         Site = unique(df$Site),
         P_Adjusted = p.adjust(P_Value, method = "holm")
       ) %>%
-      relocate(Site, Comparison, W_Statistic, P_Value, P_Adjusted)
+      relocate(Site, Framework_1, Framework_2, W_Statistic, P_Value, P_Adjusted)
   })
 
 if(!dir.exists("output")) dir.create("output")
